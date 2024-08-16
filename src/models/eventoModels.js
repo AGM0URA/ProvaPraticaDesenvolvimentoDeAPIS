@@ -1,6 +1,6 @@
 import conn from "../config/conn.js";
 
-const tableEventos =/*sql*/ `
+const tableEventos = /*sql*/ `
     CREATE TABLE IF NOT EXISTS eventos(
         evento_id varchar(60) primary key,
         evento_titulo varchar(255) not null,
@@ -18,4 +18,3 @@ conn.query(tableEventos, (err, result, field) => {
   }
   console.log("Tabela [Eventos] criada com sucesso😎");
 });
-

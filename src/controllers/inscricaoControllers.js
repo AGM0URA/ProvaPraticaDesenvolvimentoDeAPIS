@@ -3,25 +3,26 @@ import { v4 as uuidv4 } from "uuid";
 
 
 export const fazerInscrao = async (request, response) => {
-    const { participante_id, evento_id} = request.body;
+    const { participante_id, eventos_id} = request.body;
   
     if (!participante_id) {
       response.status(400).json("o id do participante é obrigatório");
       return;
     }
-    if (!evento_id) {
+    if (!eventos_id) {
       response.status(400).json("o id do Evento é obrigatória");
       return;
     }
-    const id = uuidv4();
-    const insertSQL = /*sql*/ `INSERT INTO eventos (??,??)
-    VALUES(?,?)`;
+    const inscricao_id = uuidv4();
+    const insertSQL = /*sql*/ `INSERT INTO inscricao (??,??,??)
+    VALUES(?,?,?)`;
     const insertData = [
+      "inscricao_id",
       "participante_id",
-      "evento_id",
-      id,
+      "eventos_id",
+      inscricao_id,
       participante_id,
-      evento_id,
+      eventos_id,
     ];
     conn.query(insertSQL, insertData, (err, data) => {
       if (err) {
